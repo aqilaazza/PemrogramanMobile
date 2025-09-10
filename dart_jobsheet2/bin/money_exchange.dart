@@ -18,18 +18,18 @@ void main() {
 
   // Input mata uang asal
   stdout.write("Pilih mata uang asal (1-6): ");
-  int asal = int.parse(stdin.readLineSync()!);
+  int asal = int.parse(stdin.readLineSync()!); // Input pilihan mata uang asal
 
   // Input jumlah uang
   stdout.write("Masukkan jumlah uang: ");
-  double jumlah = double.parse(stdin.readLineSync()!);
+  double jumlah = double.parse(stdin.readLineSync()!); // Input jumlah uang
 
   // Input mata uang tujuan
   stdout.write("Pilih mata uang tujuan (1-6): ");
-  int tujuan = int.parse(stdin.readLineSync()!);
+  int tujuan = int.parse(stdin.readLineSync()!); // Input pilihan mata uang tujuan
 
   // Konversi ke Rupiah sebagai perantara
-  double dalamRupiah;
+  double dalamRupiah; // Jumlah dalam Rupiah
   switch (asal) {
     case 1: dalamRupiah = jumlah; break; // IDR
     case 2: dalamRupiah = jumlah * kursUSD; break; // USD -> IDR
@@ -45,7 +45,7 @@ void main() {
   // Konversi dari Rupiah ke mata uang tujuan
   double hasil;
   String simbol;
-  switch (tujuan) {
+  switch (tujuan) { // Tujuan konversi
     case 1: hasil = dalamRupiah; simbol = "Rp"; break;
     case 2: hasil = dalamRupiah / kursUSD; simbol = "\$"; break;
     case 3: hasil = dalamRupiah / kursEUR; simbol = "€"; break;
@@ -58,6 +58,6 @@ void main() {
   }
 
   print("\n=== Hasil Konversi ===");
-  print("Jumlah awal : $jumlah");
-  print("Hasil akhir : $simbol${hasil.toStringAsFixed(2)}");
+  print("Jumlah awal : $jumlah"); // Menampilkan jumlah awal
+  print("Hasil akhir : $simbol${hasil.toStringAsFixed(2)}"); // Menampilkan hasil akhir dengan 2 desimal
 }
