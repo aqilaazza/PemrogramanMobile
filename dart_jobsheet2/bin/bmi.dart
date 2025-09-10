@@ -1,19 +1,23 @@
 import 'dart:io'; // Untuk input dan output
 
 void main() {
+  print("=================================");
+  print("       Body Mass Index (BMI)     ");
+  print("=================================\n");
+
   // Input berat badan
-  stdout.write("Masukkan berat badan (kg): "); // Prompt input
-  double berat = double.parse(stdin.readLineSync()!); // Baca input dan konversi ke double
+  stdout.write("Masukkan berat badan (kg): ");
+  double berat = double.parse(stdin.readLineSync()!);
 
   // Input tinggi badan
-  stdout.write("Masukkan tinggi badan (cm): "); // Prompt input
-  double tinggiCm = double.parse(stdin.readLineSync()!); // Baca input dan konversi ke double
+  stdout.write("Masukkan tinggi badan (cm): ");
+  double tinggiCm = double.parse(stdin.readLineSync()!);
 
   // Konversi tinggi cm -> meter
-  double tinggiMeter = tinggiCm / 100; // 1 meter = 100 cm
+  double tinggiMeter = tinggiCm / 100;
 
   // Hitung BMI
-  double bmi = berat / (tinggiMeter * tinggiMeter); 
+  double bmi = berat / (tinggiMeter * tinggiMeter);
 
   // Tentukan kategori
   String kategori;
@@ -28,9 +32,12 @@ void main() {
   }
 
   // Tampilkan hasil
-  print("\n=== Hasil Perhitungan BMI ===");
-  print("Berat Badan : $berat kg");
-  print("Tinggi Badan: $tinggiCm cm");
+  print("\n=================================");
+  print("         Hasil Perhitungan       ");
+  print("=================================");
+  print("Berat Badan : ${berat.toStringAsFixed(1)} kg");
+  print("Tinggi Badan: ${tinggiCm.toStringAsFixed(1)} cm");
   print("BMI         : ${bmi.toStringAsFixed(2)}");
   print("Kategori    : $kategori");
+  print("=================================");
 }
