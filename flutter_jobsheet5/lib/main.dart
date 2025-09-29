@@ -49,6 +49,12 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void removeFavorite(WordPair pair) { //tambahkan untuk menghapus favorite
+    favorites.remove(pair);
+    notifyListeners();
+}
+
 }
 
 
@@ -121,22 +127,37 @@ class GeneratorPage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     var pair = appState.current;
 
-    IconData icon;
-    if (appState.favorites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
-
-    // Tambahin di sini
-    var messages = ['Hello', 'Ahoj', 'こんにちは'];
+    IconData icon =
+        appState.favorites.contains(pair) ? Icons.favorite : Icons.favorite_border;
 
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Daftar favorit pindah ke atas
+          if (appState.favorites.isNotEmpty) ...[
+            Column(
+            crossAxisAlignment: CrossAxisAlignment.center, // biar rata tengah
+            children: [
+              for (var fav in appState.favorites)
+                Row(
+                  mainAxisSize: MainAxisSize.min, // biar gak full lebar
+                  children: [
+                    const Icon(Icons.favorite, color: Colors.red, size: 16),
+                    const SizedBox(width: 5),
+                    Text(fav.asLowerCase),
+                  ],
+                ),
+            ],
+          ),
+            const SizedBox(height: 20),
+          ],
+
+          // Kartu kata saat ini
           BigCard(pair: pair),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
+
+          // Tombol Like & Next
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -145,14 +166,14 @@ class GeneratorPage extends StatelessWidget {
                   appState.toggleFavorite();
                 },
                 icon: Icon(icon),
-                label: Text('Like'),
+                label: const Text('Like'),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () {
                   appState.getNext();
                 },
-                child: Text('Next'),
+                child: const Text('Next'),
               ),
             ],
           ),
@@ -202,23 +223,33 @@ class FavoritesPage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
 
     if (appState.favorites.isEmpty) {
-      return Center(
+      return const Center(
         child: Text('No favorites yet.'),
       );
     }
 
-    return ListView(
+    return ListView( 
+      padding: const EdgeInsets.all(20), // Add padding around the list
       children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
+        Text( // Add this text
+          'You have ${appState.favorites.length} favorites:',
+          style: Theme.of(context).textTheme.titleLarge,
         ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
-          ),
+        const SizedBox(height: 20),
+        Wrap(
+          spacing: 20,
+          runSpacing: 10,
+          children: [
+            for (var pair in appState.favorites)
+              Chip(
+                label: Text(pair.asLowerCase),
+                deleteIcon: const Icon(Icons.delete, color: Colors.brown),
+                onDeleted: () {
+                  appState.removeFavorite(pair); // Call the remove method
+                },
+              ),
+          ],
+        ),
       ],
     );
   }
