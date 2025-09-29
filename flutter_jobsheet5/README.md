@@ -94,7 +94,9 @@ Mengganti widget Placeholder dengan FavoritesPage
 
 Hapus favorite pada MyAppState
 <br>![Screenshot](images/tugas9/01.png)
+
 Pindah daftar favorite keatas pada Generator Page
 <br>![Screenshot](images/tugas9/02.png)
+
 Fitur ‘remove/hapus favorite’ pada Favorite page 
 <br>![Screenshot](images/tugas9/03.png)
