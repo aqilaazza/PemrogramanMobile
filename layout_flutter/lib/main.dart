@@ -70,11 +70,17 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter layout demo'),
         ),
-        body: Column(
+        body: ListView( // diganti dari Column ke ListView
           children: [
+            Image.asset( // tambahkan asset di pubspec.yaml
+              'images/jonggol.jpeg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
             titleSection,
             buttonSection,
-            textSection, // ini ditambahkan biar muncul teksnya
+            textSection,
           ],
         ),
       ),

@@ -88,3 +88,30 @@ Langkah 2: Tambahkan variabel text section ke body
 Tambahkan widget variabel textSection ke dalam body seperti berikut:
 
 <p align="center"><img src="./images/praktikum03/02.png"  width="400"/></p>
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+**Praktikum 4: Implementasi image section**
+
+Langkah 1: Siapkan aset gambar
+
+Anda dapat mencari gambar di internet yang ingin ditampilkan. Buatlah folder images di root project layout_flutter. Masukkan file gambar tersebut ke folder images, lalu set nama file tersebut ke file pubspec.yaml seperti berikut:
+
+<p align="center"><img src="./images/praktikum04/01.png"  width="400"/></p>
+
+Contoh nama file gambar di atas adalah jonggol.jpeg
+
+Langkah 2: Tambahkan gambar ke body
+
+Tambahkan aset gambar ke dalam body seperti berikut:\
+
+<p align="center"><img src="./images/praktikum04/02.png"  width="400"/></p>
+
+BoxFit.cover memberi tahu kerangka kerja bahwa gambar harus sekecil mungkin tetapi menutupi seluruh kotak rendernya.\
+
+Langkah 3: Terakhir, ubah menjadi ListView
+
+<p align="center"><img src="./images/praktikum04/03.png"  width="400"/></p>
+
+Pada langkah terakhir ini, atur semua elemen dalam ListView, bukan Column, karena ListView mendukung scroll yang dinamis saat aplikasi dijalankan pada perangkat yang resolusinya lebih kecil.
+
