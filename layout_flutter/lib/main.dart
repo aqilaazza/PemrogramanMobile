@@ -7,42 +7,45 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Title Section (judul + lokasi + icon bintang + angka)
+    // Title Section
     Widget titleSection = Container(
       padding: const EdgeInsets.all(32),
       child: Row(
         children: [
           Expanded(
-            // Soal 1: Column untuk teks judul & lokasi
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start, // Soal 2
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: const Text(
                     'Wisata Gunung di Batu',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 const Text(
                   'Batu, Malang, Indonesia',
-                  style: TextStyle(
-                    color: Colors.grey, // Soal 2 (warna teks lokasi)
-                  ),
+                  style: TextStyle(color: Colors.grey),
                 ),
               ],
             ),
           ),
-          // Soal 3: icon bintang dan angka
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
+          Icon(Icons.star, color: Colors.red[500]),
           const Text('41'),
         ],
       ),
+    );
+
+    // Button Section (pakai helper)
+    Color color = Theme.of(context).primaryColor;
+
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
     );
 
     return MaterialApp(
@@ -53,10 +56,33 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            titleSection, // Memanggil titleSection
+            titleSection,
+            buttonSection, // tambahkan di body
           ],
         ),
       ),
+    );
+  }
+
+  // HELPER METHOD ditaruh di sini
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

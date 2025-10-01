@@ -5,7 +5,7 @@
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
-Praktikum 1: Membangun Layout di Flutter
+**Praktikum 1: Membangun Layout di Flutter**
 
 <br>Langkah 1: Buat Project Baru
 <br>Buatlah sebuah project flutter baru dengan nama layout_flutter. Atau sesuaikan style laporan praktikum yang Anda buat.
@@ -38,3 +38,36 @@ Praktikum 1: Membangun Layout di Flutter
 /* soal 3 */ Dua item terakhir di baris judul adalah ikon bintang, set dengan warna merah, dan teks "41". Seluruh baris ada di dalam Container dan beri padding di sepanjang setiap tepinya sebesar 32 piksel. Kemudian ganti isi body text ‘Hello World' dengan variabel titleSection seperti berikut:
 
 <p align="center"><img src="./images/praktikum01/04-2.png"  width="400"/></p>
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+**Praktikum 2: Implementasi button row**
+
+Langkah 1: Buat method Column _buildButtonColumn
+
+Bagian tombol berisi 3 kolom yang menggunakan tata letak yang sama—sebuah ikon di atas baris teks. Kolom pada baris ini diberi jarak yang sama, dan teks serta ikon diberi warna primer.
+
+Karena kode untuk membangun setiap kolom hampir sama, buatlah metode pembantu pribadi bernama buildButtonColumn(), yang mempunyai parameter warna, Icon dan Text, sehingga dapat mengembalikan kolom dengan widgetnya sesuai dengan warna tertentu.
+
+lib/main.dart (_buildButtonColumn)
+
+<p align="center"><img src="./images/praktikum02/01.png"  width="400"/></p>
+
+Langkah 2: Buat widget buttonSection
+
+Buat Fungsi untuk menambahkan ikon langsung ke kolom. Teks berada di dalam Container dengan margin hanya di bagian atas, yang memisahkan teks dari ikon.
+
+Bangun baris yang berisi kolom-kolom ini dengan memanggil fungsi dan set warna, Icon, dan teks khusus melalui parameter ke kolom tersebut. Sejajarkan kolom di sepanjang sumbu utama menggunakan MainAxisAlignment.spaceEvenly untuk mengatur ruang kosong secara merata sebelum, di antara, dan setelah setiap kolom. Tambahkan kode berikut tepat di bawah deklarasi titleSection di dalam metode build():
+
+lib/main.dart (buttonSection)
+
+<p align="center"><img src="./images/praktikum02/02.png"  width="400"/></p>
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+**Langkah 3: Tambah button section ke body**
+
+Tambahkan variabel buttonSection ke dalam body seperti berikut:
+
+<p align="center"><img src="./images/praktikum02/03.png"  width="400"/></p>
+
