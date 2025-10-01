@@ -48,6 +48,22 @@ class MyApp extends StatelessWidget {
       ],
     );
 
+    Widget textSection = Container(
+    padding: const EdgeInsets.all(32),
+    child: const Text(
+    'Gunung Batu Jonggol adalah salah satu wisata alam di Kabupaten Bogor, '
+    'Jawa Barat, dengan ketinggian sekitar 875 mdpl. Gunung ini terkenal sebagai '
+    'tempat pendakian singkat yang cocok untuk pemula. '
+    'Dari puncaknya, pengunjung dapat menikmati panorama perbukitan hijau, '
+    'desa-desa, serta pemandangan Gunung Gede Pangrango dan Gunung Salak di kejauhan. '
+    'Waktu terbaik untuk mendaki adalah pagi atau sore hari agar dapat menyaksikan '
+    'sunrise maupun sunset yang indah. '
+    '\n\nNama : Aqila Nur Azza '
+    '\nNIM  : 2341760022 ',
+    softWrap: true,
+    ),
+  );
+
     return MaterialApp(
       title: 'Flutter layout: Aqila Nur Azza (2341760022)',
       home: Scaffold(
@@ -57,12 +73,14 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             titleSection,
-            buttonSection, // tambahkan di body
+            buttonSection,
+            textSection, // ini ditambahkan biar muncul teksnya
           ],
         ),
       ),
     );
   }
+
 
   // HELPER METHOD ditaruh di sini
   Column _buildButtonColumn(Color color, IconData icon, String label) {

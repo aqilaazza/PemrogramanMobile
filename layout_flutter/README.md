@@ -71,3 +71,20 @@ Tambahkan variabel buttonSection ke dalam body seperti berikut:
 
 <p align="center"><img src="./images/praktikum02/03.png"  width="400"/></p>
 
+--------------------------------------------------------------------------------------------------------------------------------------
+
+**Praktikum 3: Implementasi text section**
+
+Langkah 1: Buat widget textSection
+
+Tentukan bagian teks sebagai variabel. Masukkan teks ke dalam Container dan tambahkan padding di sepanjang setiap tepinya. Tambahkan kode berikut tepat di bawah deklarasi buttonSection:
+
+<p align="center"><img src="./images/praktikum03/01.png"  width="400"/></p>
+
+Dengan memberi nilai softWrap = true, baris teks akan memenuhi lebar kolom sebelum membungkusnya pada batas kata.
+
+Langkah 2: Tambahkan variabel text section ke body
+
+Tambahkan widget variabel textSection ke dalam body seperti berikut:
+
+<p align="center"><img src="./images/praktikum03/02.png"  width="400"/></p>
