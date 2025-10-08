@@ -88,5 +88,23 @@ class RedTextWidget extends StatelessWidget {
 <br>Langkah 6: Tambahkan widget di main.dart
 <br>Buka file main.dart lalu tambahkan di dalam children: pada class _MyHomePageState
 
+```dart
+Container(
+              color: Colors.yellowAccent,
+              width: 50,
+              child: const RedTextWidget(
+                text: 'You have pushed the button this many times:',
+              ),
+            ),
+            Container(
+              color: Colors.greenAccent,
+              width: 100,
+              child: const Text(
+                'You have pushed the button this many times:',
+              ),
+            ),
+```
+
 <br>Run aplikasi tersebut dengan tekan F5, maka hasilnya akan seperti berikut.
+<p align="center"><img src="./image/praktikum01/03.png"  width="400"/></p>
 
