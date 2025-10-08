@@ -10,10 +10,14 @@
 <br>Perhatian: Diasumsikan Anda telah berhasil melakukan setup environment Flutter SDK, VS Code, Flutter Plugin, dan Android SDK pada pertemuan pertama.
 <br>Langkah 1: Buat Project Baru
 <br>Buatlah sebuah project flutter baru dengan nama flutter_plugin_pubdev. Lalu jadikan repository di GitHub Anda dengan nama flutter_plugin_pubdev.
-<p align="center"><img src="./Image/praktikum01/01.png"  width="400"/></p>
+<p align="center">
+  <img src="Image/praktikum01/01.png" width="400">
+</p>
 <br>Langkah 2: Menambahkan Plugin
 <br>Tambahkan plugin auto_size_text menggunakan perintah berikut di terminal 'flutter pub add auto_size_text'
-<p align="center"><img src="./Image/praktikum01/02.png"  width="400"/></p>
+<p align="center">
+  <img src="Image/praktikum01/02.png" width="400">
+</p>
 <br>Jika berhasil, maka akan tampil nama plugin beserta versinya di file pubspec.yaml pada bagian dependencies.
 <br>Tampilan pada file pubspec_yaml
 
@@ -106,5 +110,8 @@ Container(
 ```
 
 <br>Run aplikasi tersebut dengan tekan F5, maka hasilnya akan seperti berikut.
-<p align="center"><img src="./Image/praktikum01/03.png"  width="400"/></p>
+<p align="center">
+  <img src="Image/praktikum01/03.png" width="400">
+</p>
+
 
