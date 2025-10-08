@@ -35,7 +35,32 @@ auto_size_text: ^3.0.0
 <br>Langkah 3: Buat file red_text_widget.dart
 <br>Buat file baru bernama red_text_widget.dart di dalam folder lib lalu isi kode seperti berikut.
 
+```dart
+import 'package:flutter/material.dart';
+
+class RedTextWidget extends StatelessWidget {
+  const RedTextWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+```
+<br>>Langkah 4: Tambah Widget AutoSizeText
+<br>Masih di file red_text_widget.dart, untuk menggunakan plugin auto_size_text, ubahlah kode return Container() menjadi seperti berikut.
+
+```dart
+return AutoSizeText(
+          text,
+          style: const TextStyle(color: Colors.red, fontSize: 14),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+    );
+```
 <br>Setelah Anda menambahkan kode di atas, Anda akan mendapatkan info error. Mengapa demikian? Jelaskan dalam laporan praktikum Anda!
+<br>Jawab : Terdapat dua penyebab error di red_text_widget.dart: paket AutoSizeText belum diimpor, dan kelas RedTextWidget belum memiliki properti text. Maka dari itu, perlu ditambahkan import 'package:auto_size_text/auto_size_text.dart'; serta mendeklarasikan final String text; dan parameter konstruktor required this.text di dalam kelas RedTextWidget.
+
 <br>Langkah 5: Buat Variabel text dan parameter di constructor
 <br>Tambahkan variabel text dan parameter di constructor seperti berikut.
 <br>Langkah 6: Tambahkan widget di main.dart
