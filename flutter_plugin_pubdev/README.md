@@ -114,4 +114,80 @@ Container(
   <img src="Image/praktikum01/03.png" width="400">
 </p>
 
+--------------------------------------------------------------------------------------------------------------------------------------
+
+**Tugas**
+
+1. Jelaskan maksud dari langkah 2 pada praktikum tersebut!
+
+```dart
+flutter pub add auto_size_text
+```
+
+Jawab : Langkah 2 bertujuan untuk menambahkan dependency (plugin) bernama auto_size_text ke dalam project Flutter.
+Plugin ini digunakan agar teks dapat menyesuaikan ukuran font-nya secara otomatis agar tetap muat di dalam batas layout tanpa terpotong.
+Perintah flutter pub add auto_size_text akan menambahkan plugin tersebut ke bagian dependencies: pada file pubspec.yaml, sehingga Flutter tahu bahwa project membutuhkan pustaka ini saat dijalankan.
+
+2. Jelaskan maksud dari langkah 5 pada praktikum tersebut!
+
+```dart
+final String text;
+
+const RedTextWidget({Key? key, required this.text}) : super(key: key);
+```
+
+Jawab : Langkah 5 menambahkan variabel dan parameter konstruktor pada kelas RedTextWidget.
+Tujuannya agar widget tersebut dapat menerima input teks dari luar, sehingga lebih fleksibel dan dapat digunakan berulang kali dengan teks yang berbeda.
+
+
+3. Pada langkah 6 terdapat dua widget yang ditambahkan, jelaskan fungsi dan perbedaannya!
+
+```dart
+Container(
+              color: Colors.yellowAccent,
+              width: 50,
+              child: const RedTextWidget(
+                text: 'You have pushed the button this many times:',
+              ),
+            ),
+            Container(
+              color: Colors.greenAccent,
+              width: 100,
+              child: const Text(
+                'You have pushed the button this many times:',
+              ),
+            ),
+```
+Jawab : 
+
+- Container pertama (warna kuning) menggunakan widget RedTextWidget yang menampilkan teks dengan gaya khusus (Text berwarna merah) menggunakan plugin auto_size_text.
+→ Ini adalah widget custom buatan sendiri.
+
+- Container kedua (warna hijau) menggunakan widget Text bawaan Flutter tanpa penyesuaian otomatis ukuran font.
+→ Ini adalah widget bawaan default Flutter.
+
+- Perbedaannya, RedTextWidget bisa menyesuaikan ukuran teks secara otomatis agar tetap muat di tempatnya, sedangkan Text hanya menampilkan teks biasa tanpa bisa menyesuaikan ukuran kalau teksnya terlalu panjang.
+
+
+4. Jelaskan maksud dari tiap parameter yang ada di dalam plugin auto_size_text berdasarkan tautan pada dokumentasi ini !
+
+### Parameter dan Contoh Penggunaan Plugin `AutoSizeText`
+
+| **Parameter** | **Fungsinya** | **Contoh Penggunaan** |
+|----------------|---------------|------------------------|
+| **text** | Menentukan teks yang akan ditampilkan pada widget. | `text: 'Hello Flutter'` |
+| **style** | Mengatur tampilan teks seperti warna, ukuran, dan jenis font. | `style: TextStyle(color: Colors.red, fontSize: 16)` |
+| **maxLines** | Membatasi jumlah baris maksimal teks yang bisa ditampilkan. | `maxLines: 2` |
+| **overflow** | Menentukan bagaimana teks yang terlalu panjang akan ditampilkan, misalnya dengan tanda “...”. | `overflow: TextOverflow.ellipsis` |
+| **minFontSize** | Menentukan ukuran font terkecil yang diperbolehkan ketika teks otomatis mengecil. | `minFontSize: 10` |
+| **maxFontSize** | Menentukan ukuran font terbesar yang diperbolehkan untuk teks. | `maxFontSize: 20` |
+| **stepGranularity** | Mengatur tingkat kehalusan perubahan ukuran font saat teks menyesuaikan ruangnya. | `stepGranularity: 0.5` |
+| **wrapWords** | Mengatur apakah kata boleh dipotong saat teks disesuaikan. Jika `false`, kata tidak akan dipecah. | `wrapWords: true` |
+| **softWrap** | Menentukan apakah teks boleh berpindah ke baris berikutnya ketika tidak muat dalam satu baris. | `softWrap: true` |
+| **presetFontSizes** | Menentukan daftar ukuran font yang bisa dicoba secara otomatis oleh widget agar teks tetap pas. | `presetFontSizes: [18, 16, 14, 12]` |
+| **textAlign** | Mengatur perataan teks (kiri, kanan, tengah, atau justify). | `textAlign: TextAlign.center` |
+| **overflowReplacement** | Menentukan widget pengganti yang akan ditampilkan jika teks tidak bisa ditampilkan sama sekali. | `overflowReplacement: Text('Teks terlalu panjang')` |
+
+
+Plugin auto_size_text memudahkan pengembang agar teks otomatis menyesuaikan ruang tampilan tanpa memotong atau melampaui batas layout, sehingga tampilan UI tetap rapi dan responsif.
 
