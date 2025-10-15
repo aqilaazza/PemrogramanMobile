@@ -40,7 +40,12 @@ Simpan file lalu jalankan
 **4.3. Langkah 3: Tambahkan Izin Kamera (Android)**
 
 Buka file: android/app/src/main/AndroidManifest.xml
+
 Tambahkan baris berikut di dalam tag <manifest>, sebelum <application>:
+
+```dart
+<uses-permission android:name="android.permission.CAMERA" />
+```
 
 **4.4. Langkah 4: Buat Struktur Folder**
 
