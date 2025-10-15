@@ -21,19 +21,21 @@ Buka terminal, lalu jalankan:
 
 Buka file pubspec.yaml, lalu tambahkan dependensi berikut di bawah bagian dependencies:
 ```dart
-  dependencies:
-    flutter:
-        sdk: flutter
-    google _ mlkit _ text _ recognition : ˆ0.10.0
-    camera : ˆ0.10.5+5
-    path _ provider : ˆ2.1.2
-    path : ˆ1.8.3
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_mlkit_text_recognition: ^0.10.0
+  camera : ^0.10.5+5
+  path_provider : ^2.1.2
+  path : ^1.8.3
 ```
 
-**4.2. Langkah 2: Tambahkan Plugin**
+Simpan file lalu jalankan 
 
-Buka file pubspec.yaml, lalu tambahkan dependensi berikut di bawah bagian dependencies:
-
+<p align="center">
+  <img src="Images/03.png" width="400">
+</p>
 
 **4.3. Langkah 3: Tambahkan Izin Kamera (Android)**
 
