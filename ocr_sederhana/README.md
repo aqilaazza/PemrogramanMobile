@@ -50,6 +50,11 @@ Tambahkan baris berikut di dalam tag <manifest>, sebelum <application>:
 **4.4. Langkah 4: Buat Struktur Folder**
 
 Di dalam folder lib/, buat struktur berikut:
+
+<p align="center">
+  <img src="Images/04.png" width="400">
+</p>
+
 5. KODE PROGRAM
 
 5.1. File: lib/main.dart
