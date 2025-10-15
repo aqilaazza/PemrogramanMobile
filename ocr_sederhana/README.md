@@ -1,16 +1,48 @@
-# ocr_sederhana
+**NAMA LENGKAP : AQILA NUR AZZA**
+<br>**KELAS : 3C**
+<br>**NIM : 2341760022**
+<br>**JOBSHEET 6: MANAJEMEN PLUGIN**
 
-A new Flutter project.
+--------------------------------------------------------------------------------------------------------------------------------------
 
-## Getting Started
+**4.1. Langkah 1: Buat Proyek Baru**
+Buka terminal, lalu jalankan:
 
-This project is a starting point for a Flutter application.
+<p align="center">
+  <img src="Images/01.png" width="400">
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+<p align="center">
+  <img src="Images/02.png" width="400">
+</p>
+ 
+**4.2. Langkah 2: Tambahkan Plugin**
+Buka file pubspec.yaml, lalu tambahkan dependensi berikut di bawah bagian dependencies:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**4.2. Langkah 2: Tambahkan Plugin**
+Buka file pubspec.yaml, lalu tambahkan dependensi berikut di bawah bagian dependencies:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**4.3. Langkah 3: Tambahkan Izin Kamera (Android)**
+Buka file: android/app/src/main/AndroidManifest.xml
+Tambahkan baris berikut di dalam tag <manifest>, sebelum <application>:
+
+**4.4. Langkah 4: Buat Struktur Folder**
+Di dalam folder lib/, buat struktur berikut:
+5. KODE PROGRAM
+
+5.1. File: lib/main.dart
+5.2. File: lib/screens/splash screen.dart
+5.3. File: lib/screens/home screen.dart
+5.4. File: lib/screens/scan screen.dart
+5.5. File: lib/screens/result screen.dart
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+6. TUGAS PRAKTIKUM
+1. Jalankan aplikasi di emulator atau HP.
+2. Lakukan scan terhadap teks cetak (misal: buku, koran, atau layar HP).
+3. Amati hasil OCR yang muncul.
+4. Jawab pertanyaan berikut:
+a. Apakah semua teks terbaca dengan akurat? Mengapa?
+b. Apa kegunaan fitur OCR dalam kehidupan sehari-hari?
+c. Sebutkan 2 contoh aplikasi nyata yang menggunakan OCR!
