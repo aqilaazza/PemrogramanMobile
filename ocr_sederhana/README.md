@@ -399,6 +399,40 @@ HomeScreen.
 •	Atur ListTile: leading: Icon(Icons.camera_alt, color:	Colors.blue); title: Text(’Mulai Pindai Teks Baru’).
 
 •	Fungsi onTap harus menggunakan Navigator.push() untuk ke ScanScreen.
+```dart
+    import 'package:flutter/material.dart';
+    import 'scan_screen.dart';
+
+    class HomeScreen extends StatelessWidget {
+    const HomeScreen({super.key});
+
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+        appBar: AppBar(title: const Text('Menu Utama')),
+        body: ListView(
+            children: [
+            ListTile(
+                leading: const Icon(Icons.camera_alt, color: Colors.blue),
+                title: const Text('Mulai Pindai Teks Baru'),
+                onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ScanScreen()),
+                );
+                },
+            ),
+            ],
+        ),
+        );
+    }
+    }
+```
+Output
+
+<p align="center">
+  <img src="images/11.jpg" width="400">
+</p>
 
 2.	Teks Utuh dan Navigasi Balik (15 Poin):
 
@@ -409,6 +443,51 @@ agar hasil teks ditampilkan dengan baris baru (\n) yang utuh.
 •	Tambahkan FloatingActionButton dengan ikon Icons.home.
 
 •	Ketika tombol ditekan, navigasi harus kembali langsung ke HomeScreen meng- gunakan **Navigator.pushAndRemoveUntil()** (atau metode yang setara) untuk menghapus semua halaman di atasnya dari stack navigasi.
+
+```dart
+    import 'package:flutter/material.dart';
+    import 'home_screen.dart';
+
+    class ResultScreen extends StatelessWidget {
+    final String ocrText;
+    const ResultScreen({super.key, required this.ocrText});
+
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+        appBar: AppBar(title: const Text('Hasil OCR')),
+        body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+            ocrText,
+            style: const TextStyle(fontSize: 16),
+            ),
+        ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => const HomeScreen()),
+                (route) => false,
+            );
+            },
+            child: const Icon(Icons.home),
+        ),
+        );
+    }
+    }
+```
+Output
+
+<p align="center">
+  <img src="images/10.jpg" width="400">
+</p>
+
+Perintah Commit Wajib 
+
+<p align="center">
+  <img src="images/09.png" width="400">
+</p>
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -423,11 +502,62 @@ agar hasil teks ditampilkan dengan baris baru (\n) yang utuh.
 •	Isi:	Di dalam Center, tampilkan Column berisi CircularProgressIndicator(col Colors.yellow).
 •	Di bawah indikator, tambahkan Text(’Memuat Kamera...	Harap tunggu.’, style:	TextStyle(color:	Colors.white, fontSize:	18)).
 
+```dart
+if (_controller == null || !_controller!.value.isInitialized) {
+  return Scaffold(
+    backgroundColor: Colors.grey[900],
+    body: const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircularProgressIndicator(color: Colors.yellow),
+          SizedBox(height: 20),
+          Text(
+            'Memuat Kamera... Harap tunggu.',
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+```
+
+Output
+
+<p align="center">
+  <img src="images/12.jpg" width="400">
+</p>
+
 2.	Spesifikasi Pesan Error (20 Poin):
 
 •	Di fungsi _takePicture() pada ScanScreen, modifikasi blok catch (e) un- tuk mengubah pesan *error* pada SnackBar.
 
 •	Pesan SnackBar harus berbunyi: "Pemindaian Gagal! Periksa Izin Kam- era atau coba lagi." (Hilangkan variabel *error* ($e)).
+
+```dart
+    catch (e) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+        content: Text('Pemindaian Gagal! Periksa Izin Kamera atau coba lagi.'),
+        ),
+    );
+    }
+```
+
+Output
+
+<p align="center">
+  <img src="images/13.jpg" width="400">
+</p>
+
+Perintah Commit Wajib 
+
+<p align="center">
+  <img src="images/14.png" width="400">
+</p>
 
 --------------------------------------------------------------------------------------------------------------------------------------
 **Soal 3: Implementasi Plugin Text-to-Speech (TTS) (30 Poin)**
@@ -435,6 +565,15 @@ agar hasil teks ditampilkan dengan baris baru (\n) yang utuh.
 1.	Instalasi Plugin (5 Poin):
 
 •	Tambahkan *plugin* flutter_tts ke dalam file pubspec.yaml (gunakan versi terbaru yang kompatibel).
+
+```Dart
+# Plugin tambahan untuk OCR dan kamera
+  google_mlkit_text_recognition: ^0.15.0
+  camera: ^0.11.0
+  path_provider: ^2.1.3
+  path: ^1.9.0
+  flutter_tts: ^3.8.5
+```
 
 •	Jalankan flutter pub get.
 
@@ -446,6 +585,38 @@ agar hasil teks ditampilkan dengan baris baru (\n) yang utuh.
 
 •	Implementasikan dispose() untuk menghentikan mesin TTS saat halaman ditutup.
 
+```dart
+class ResultScreen extends StatefulWidget {   // Sudah diubah jadi StatefulWidget
+  final String ocrText;
+  const ResultScreen({super.key, required this.ocrText});
+
+  @override
+  State<ResultScreen> createState() => _ResultScreenState();
+}
+
+class _ResultScreenState extends State<ResultScreen> {
+  late FlutterTts flutterTts;  // Deklarasi FlutterTts
+
+  @override
+  void initState() {
+    super.initState();
+    flutterTts = FlutterTts();   // Inisialisasi FlutterTts
+    _initTts();                  // Panggil fungsi inisialisasi
+  }
+
+  Future<void> _initTts() async {
+    await flutterTts.setLanguage("id-ID");  // Bahasa Indonesia
+    await flutterTts.setSpeechRate(0.5);    // (Tambahan opsional, kecepatan bicara)
+  }
+
+  @override
+  void dispose() {
+    flutterTts.stop();   //Hentikan mesin TTS saat halaman ditutup
+    super.dispose();
+  }
+}
+```
+
 3.	Fungsionalitas Pembacaan (15 Poin):
 
 •	Tambahkan FloatingActionButton kedua di ResultScreen (atau ganti AppBar
@@ -453,4 +624,37 @@ dengan action button) dengan ikon Icons.volume_up.
 
 •	Ketika tombol ditekan, panggil fungsi speak() pada FlutterTts untuk mem- bacakan seluruh isi ocrText.
 
+```dart
+floatingActionButton: Row(
+  mainAxisAlignment: MainAxisAlignment.end,
+  children: [
+    FloatingActionButton(
+      heroTag: "home",
+      onPressed: () {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const HomeScreen()),
+          (route) => false,
+        );
+      },
+      child: const Icon(Icons.home),  // Tombol untuk kembali ke Home
+    ),
+    const SizedBox(width: 16),
+    FloatingActionButton(
+      heroTag: "tts",
+      onPressed: _speakText,           // Panggil fungsi TTS saat ditekan
+      child: const Icon(Icons.volume_up), // Tombol ikon suara
+    ),
+  ],
+),
+```
 
+Output 
+
+
+
+Perintah Commit Wajib 
+
+<p align="center">
+  <img src="images/16.png" width="400">
+</p>
