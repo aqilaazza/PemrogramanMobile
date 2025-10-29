@@ -5,4 +5,12 @@ class Plan {
   final List<Task> tasks;
   
   const Plan({this.name = '', this.tasks = const []});
+
+  // Langkah 3: Tambah method pada model plan.dart
+  int get completedCount => tasks
+      .where((task) => task.complete)
+      .length;
+
+  String get completenessMessage =>
+      '$completedCount out of ${tasks.length} tasks';
 }
