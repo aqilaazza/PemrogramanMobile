@@ -7,7 +7,11 @@
 
 **Praktikum 1: Dasar State dengan Model-View**
 
+<<<<<<< HEAD
 ![Demo Aplikasi](./img/01.gif)
+=======
+[<video src="./img/01.mp4" controls width="600"></video>](https://github.com/aqilaazza/PemrogramanMobile/blob/main/master_plan/img/01.mp4)
+>>>>>>> c6e132a53968bc4df7f62eed1599d39c5776631d
 
 Penjelasan : 
 
