@@ -7,7 +7,7 @@
 
 **Praktikum 1: Dasar State dengan Model-View**
 
-<video src="./img/01.mp4" controls width="600"></video>
+![Demo Aplikasi](./img/01.gif)
 
 Penjelasan : 
 
@@ -15,7 +15,7 @@ Aplikasi Master Plan menampilkan daftar tugas dengan kotak centang dan tombol â€
 
 **Praktikum 2: Mengelola Data Layer dengan InheritedWidget dan InheritedNotifier**
 
-<video src="./img/02.mp4" controls width="600"></video>
+![Demo Aplikasi](./img/02.gif)
 
 Penjelasan : 
 
@@ -23,7 +23,7 @@ Aplikasi Master Plan yang dibuat dengan Flutter menampilkan daftar tugas (to-do 
 
 **Praktikum 3: Membuat State di Multiple Screens**
 
-<video src="./img/03.mp4" controls width="600"></video>
+![Demo Aplikasi](./img/03.gif)
 
 Penjelasan : 
 
